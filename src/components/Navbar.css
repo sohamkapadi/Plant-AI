@@ -1,5 +1,3 @@
-/* Navbar.css */
-
 /* Navbar styling */
 .navbar {
   display: flex;
@@ -42,6 +40,7 @@
   text-decoration: none; /* Ensure no underline on hover */
 }
 
+/* Dropdown Styles */
 .dropdown-menu {
   position: absolute; /* Positioning for dropdown */
   top: 100%; /* Place below the dropdown item */
@@ -50,14 +49,16 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
   z-index: 1000; /* Ensure dropdown is on top */
   display: none; /* Initially hidden */
+  padding: 0; /* Remove any default padding */
 }
 
 .dropdown:hover .dropdown-menu {
   display: block; /* Show dropdown on hover */
 }
 
+/* Dropdown Menu Items */
 .dropdown-menu li {
-  padding: 10px; /* Padding for dropdown items */
+  padding: 10px 20px; /* Padding for dropdown items */
 }
 
 .dropdown-menu li button {
@@ -67,6 +68,7 @@
   cursor: pointer; /* Pointer cursor */
   width: 100%; /* Full width */
   text-align: left; /* Align text to left */
+  padding: 10px; /* Add padding for button */
 }
 
 .dropdown-menu li button:hover {
@@ -177,5 +179,16 @@ button[type="submit"]:hover {
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   z-index: 1000; /* Ensure it’s on top */
+}
+
+/* Extra styles for dropdown menu to remove unwanted space */
+.dropdown-menu {
+  padding: 0; /* Remove any padding */
+  margin: 0; /* Remove margins */
+}
+
+.dropdown-menu li {
+  margin: 0; /* Ensure no margin */
+  padding: 10px 20px; /* Adjust padding */
 }
 

@@ -7,6 +7,7 @@ import HowItWorks from './components/HowItWorks';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CaseStudies from './components/CaseStudies';
 import Resources from './components/Resources';
+import ImageAnalysis from './components/ImageAnalysis';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/image-analysis" element={<ImageAnalysis />} />
           {/* <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/features" element={<KeyFeatures />} /> */}

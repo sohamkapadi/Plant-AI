@@ -1,10 +1,9 @@
-// components/Navbar.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import logo from '../assets/logo.jpeg'; // Ensure the correct path for the logo
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 import Modal from 'react-modal';
-import { FaHome, FaStar, FaFileAlt, FaQuestionCircle, FaFolderOpen, FaVideo, FaEnvelope, FaRocket } from 'react-icons/fa'; // Import icons
+import { FaHome, FaStar, FaFileAlt, FaQuestionCircle, FaFolderOpen, FaEnvelope, FaImage, FaChartLine, FaCogs, FaLeaf } from 'react-icons/fa'; // Import icons
 
 function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -15,9 +14,11 @@ function Navbar() {
   const [isDataInsightsModalOpen, setIsDataInsightsModalOpen] = useState(false);
   const [isPredictiveAnalyticsModalOpen, setIsPredictiveAnalyticsModalOpen] = useState(false);
   const [isTreatmentRecommendationsModalOpen, setIsTreatmentRecommendationsModalOpen] = useState(false);
-  const [isCaseStudiesModalOpen, setIsCaseStudiesModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isGetStartedModalOpen, setIsGetStartedModalOpen] = useState(false);
+
+  // Use location from react-router-dom
+  const location = useLocation();
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -64,6 +65,16 @@ function Navbar() {
     },
   };
 
+  // Close all modals on route change
+  useEffect(() => {
+    setIsImageAnalysisModalOpen(false);
+    setIsDataInsightsModalOpen(false);
+    setIsPredictiveAnalyticsModalOpen(false);
+    setIsTreatmentRecommendationsModalOpen(false);
+    setIsContactModalOpen(false);
+    setIsGetStartedModalOpen(false);
+  }, [location]); // Run this effect when location changes
+
   return (
     <nav className="navbar">
       <div className="logo">
@@ -76,10 +87,26 @@ function Navbar() {
           <a href="#features" className="dropdown-toggle"><FaStar /> Features</a>
           {dropdownOpen && (
             <ul className="dropdown-menu">
-              <li><button onClick={() => setIsImageAnalysisModalOpen(true)}>Image Analysis</button></li>
-              <li><button onClick={() => setIsDataInsightsModalOpen(true)}>Real-Time Data Insights</button></li>
-              <li><button onClick={() => setIsPredictiveAnalyticsModalOpen(true)}>Predictive Analytics</button></li>
-              <li><button onClick={() => setIsTreatmentRecommendationsModalOpen(true)}>Treatment Recommendations</button></li>
+              <li>
+                <button onClick={() => setIsImageAnalysisModalOpen(true)}>
+                  <FaImage /> Image Analysis
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setIsDataInsightsModalOpen(true)}>
+                  <FaChartLine /> Real-Time Data Insights
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setIsPredictiveAnalyticsModalOpen(true)}>
+                  <FaCogs /> Predictive Analytics
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setIsTreatmentRecommendationsModalOpen(true)}>
+                  <FaLeaf /> Treatment Recommendations
+                </button>
+              </li>
             </ul>
           )}
         </li>
@@ -140,10 +167,51 @@ function Navbar() {
         <span className="modal-close" onClick={() => setIsImageAnalysisModalOpen(false)}>&times;</span>
         <h2>Image Analysis</h2>
         <p>Our AI-based image analysis system helps identify crop diseases and assess plant health by analyzing images.</p>
+        <Link to="/image-analysis">
+          <button className="more-info">More Info</button>
+        </Link>
+      </Modal>
+
+      {/* Modal for Real-Time Data Insights */}
+      <Modal
+        isOpen={isDataInsightsModalOpen}
+        onRequestClose={() => setIsDataInsightsModalOpen(false)}
+        style={modalStyles}
+        contentLabel="Real-Time Data Insights"
+      >
+        <span className="modal-close" onClick={() => setIsDataInsightsModalOpen(false)}>&times;</span>
+        <h2>Real-Time Data Insights</h2>
+        <p>Get real-time insights into plant health, soil quality, and environmental conditions to optimize farming.</p>
         <button className="more-info">More Info</button>
       </Modal>
 
-      {/* Modal for Contact Us */}
+      {/* Modal for Predictive Analytics */}
+      <Modal
+        isOpen={isPredictiveAnalyticsModalOpen}
+        onRequestClose={() => setIsPredictiveAnalyticsModalOpen(false)}
+        style={modalStyles}
+        contentLabel="Predictive Analytics"
+      >
+        <span className="modal-close" onClick={() => setIsPredictiveAnalyticsModalOpen(false)}>&times;</span>
+        <h2>Predictive Analytics</h2>
+        <p>Leverage AI-driven predictive analytics to forecast potential crop issues and recommend future actions.</p>
+        <button className="more-info">More Info</button>
+      </Modal>
+
+      {/* Modal for Treatment Recommendations */}
+      <Modal
+        isOpen={isTreatmentRecommendationsModalOpen}
+        onRequestClose={() => setIsTreatmentRecommendationsModalOpen(false)}
+        style={modalStyles}
+        contentLabel="Treatment Recommendations"
+      >
+        <span className="modal-close" onClick={() => setIsTreatmentRecommendationsModalOpen(false)}>&times;</span>
+        <h2>Treatment Recommendations</h2>
+        <p>Receive tailored treatment recommendations based on crop analysis and identified issues.</p>
+        <button className="more-info">More Info</button>
+      </Modal>
+
+      {/* Modal for Contact */}
       <Modal
         isOpen={isContactModalOpen}
         onRequestClose={() => setIsContactModalOpen(false)}
