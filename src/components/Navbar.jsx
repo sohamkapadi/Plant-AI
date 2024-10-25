@@ -182,7 +182,9 @@ function Navbar() {
         <span className="modal-close" onClick={() => setIsDataInsightsModalOpen(false)}>&times;</span>
         <h2>Real-Time Data Insights</h2>
         <p>Get real-time insights into plant health, soil quality, and environmental conditions to optimize farming.</p>
+        <Link to="/real-time-data-insights">
         <button className="more-info">More Info</button>
+        </Link>
       </Modal>
 
       {/* Modal for Predictive Analytics */}
