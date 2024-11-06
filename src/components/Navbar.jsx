@@ -197,7 +197,9 @@ function Navbar() {
         <span className="modal-close" onClick={() => setIsPredictiveAnalyticsModalOpen(false)}>&times;</span>
         <h2>Predictive Analytics</h2>
         <p>Leverage AI-driven predictive analytics to forecast potential crop issues and recommend future actions.</p>
+        <Link to="/predictive-analysis">
         <button className="more-info">More Info</button>
+        </Link>
       </Modal>
 
       {/* Modal for Treatment Recommendations */}

@@ -4,7 +4,7 @@ import './Section.css';
 import Features from './Features';
 import About from './About';
 import Contact from './Contact';
-import HomeImg from '../assets/HomeImg.jpeg';
+import HomeImg from '../assets/HomeFarmer.png';
 
 function Home() {
   return (
